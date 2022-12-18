@@ -1,0 +1,15 @@
+html, body{
+    height: 100vh;
+    background: #DDD;
+}
+
+.form-title{
+    letter-spacing: .15rem;
+}
+.form-center{
+    margin: 0 auto;
+}
+
+form .card{
+    width: 18rem;
+}

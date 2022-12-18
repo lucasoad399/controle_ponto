@@ -1,0 +1,180 @@
+:root{
+    --aside_size : 250px;
+}
+
+
+body{
+    
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-columns: var(--aside_size) 8fr ;
+    grid-template-areas: 
+        'header header ' 
+        'aside main '
+        'aside footer ';
+
+    height: 100vh;
+    background-color: #DDD;
+}
+
+body.aside-hide{
+    grid-template-areas: 
+        'header header ' 
+        'main main '
+        'footer footer ';
+}
+
+header.header{
+    grid-area: header;
+    background-color: #1976d2;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.26);
+    /* font-size: 2rem; */
+}
+
+header.header .logo{
+    width: var(--aside_size);
+    color: white;
+
+    font-size: 2rem;
+    /* flex-basis: 20%; */
+}
+header.header .menu-toogle{
+    color:white;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+header.header .spacer{
+    margin: 0 auto;
+}
+header.header .dropdown{
+    position: absolute;
+    right: 0;
+    /* display: flex; */    
+}
+header.header .dropdown .dropdown-button{
+    cursor: pointer;
+}
+header.header .dropdown:hover .dropdown-content{
+    display: block;
+}
+header.header .dropdown .dropdown-content{
+    display: none;
+    position: absolute;
+    ;
+}
+header.header .dropdown .nav-item{
+    list-style: none;
+}
+header.header .dropdown .nav-item a{
+    color: black;
+    text-decoration: none;
+}
+
+aside.aside{
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF;
+    box-shadow: -5px 0px 15px 1px rgba(0,0,0,0.3);
+}
+
+.aside-hide aside.aside{
+    display: none;
+}
+aside.aside .menu{
+    width: 100%;
+    flex-grow: 1;
+}
+aside.aside .menu .nav-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+aside.aside .menu li.nav-item{
+    margin: 0;
+    padding: 10px 0px 10px 25px;
+}
+aside.aside .menu li.nav-item:hover{
+    background-color: #DDD;
+    cursor: pointer;
+}
+
+aside.aside .menu .nav-item a{
+    text-decoration: none;
+    color: black;
+}
+aside.aside .sidebar-widgets{
+    position:sticky;
+    bottom: 30px;
+}
+
+aside.aside .sidebar-widgets .division{
+    border: 1px solid #DDD;
+    widows: 80%;
+}
+
+aside.aside .sidebar-widget{
+    display: flex;
+    align-items: center;
+}
+aside.aside .sidebar-widget .info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px 10px 2px 0;
+    flex: 1;
+}
+
+aside.aside .sidebar-widget .icon{
+    font-size: 3.5rem;
+} 
+
+
+
+main.main{
+    grid-area: main;
+    background-color: #FFF;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.2);
+    
+}
+
+main.main .content-title{
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #CCC;
+}
+
+main.main .content-title .icon{
+    font-size: 3rem;
+}
+
+main.main .content-title h1{
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+main.main .content-title h2{
+    color: #888;
+    font-size: 1.2rem;
+}
+
+main.main .card{}
+
+footer.footer{
+    display: flex;
+    align-items: center;
+    color: white;
+    grid-area: footer;
+    background-color: black;
+    justify-content: flex-end;
+    padding-right: 4rem;
+    font-size: 1.2rem;
+}

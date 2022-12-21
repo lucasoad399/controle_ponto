@@ -93,7 +93,7 @@ function populatingWorkingHours(
             $columns = array_merge($columns, $template);
             $workingHours = new WorkingHours($columns);
             
-            $workingHours->save();
+            $workingHours->insert();
             $currentDate = Util::getNextDay($currentDate)->format('Y-m-d');
             $columns['work_date'] = $currentDate;
 
@@ -103,10 +103,10 @@ function populatingWorkingHours(
 $lastMonth = strtotime('first day of last month');
 
 
-// populatingWorkingHours(1, date('Y-m-d', $lastMonth),70,20,10);
-// populatingWorkingHours(3, date('Y-m-d', $lastMonth),70,20,10);
-// populatingWorkingHours(4, date('Y-m-d', $lastMonth),20,10,70);
-// echo gettype($regularDay);
+populatingWorkingHours(1, date('Y-m-d', $lastMonth),70,20,10);
+populatingWorkingHours(3, date('Y-m-d', $lastMonth),70,20,10);
+populatingWorkingHours(4, date('Y-m-d', $lastMonth),20,10,70);
+
 
 
 

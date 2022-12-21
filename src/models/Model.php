@@ -16,13 +16,18 @@ class Model{
         }
     }
 
-    public function save(){
+    public function insert(){
         $tableName = static::$tableName;
-        $id = (int)static::getOne(['id'], 'max(id) as id')->id+1; // oi eu aqui gerando um id+1;
-              
+        // $id = (int)static::getOne(['id'], 'max(id) as id')->id+1; // oi eu aqui gerando um id+1;
+        // echo '<hr>'.$id . '<hr>';
+        $colunas = static::$columns;
+        // unset($colunas['id']);
+        array_shift($colunas);
+        
+        // print_r($colunas);
         $sql = "INSERT INTO " . static::$tableName . "(". 
-        implode(', ',static::$columns) . ") values(";
-        $sql.= $id .', '; // oi eu aqui metendo o id na query;
+        implode(', ',$colunas) . ") values(";
+        // $sql.= $id .', '; // oi eu aqui metendo o id na query;
         foreach ($this->values as $value) {
             $sql.= static::getFormatedeValue($value) . ", ";
         }
@@ -32,8 +37,26 @@ class Model{
         
     
        
-        // echo "Teste: ".$sql."<br>";
+        echo "Teste: ".$sql."<br>";
         (new Database)->executeSQL($sql);
+    }
+
+    public function update(){
+        $sql = "UPDATE ". static::$tableName . " SET ";
+
+        foreach (static::$columns as $col) {
+
+            $sql.= $col. ' = ' . static::getFormatedeValue($this->$col) . ', ';
+            
+
+        }
+
+        $sql = substr($sql, 0, -2);
+
+        $sql.= " WHERE id = ". $this->id;
+
+        echo $sql.'<br><br>';
+        return (new Database)->executeSQL($sql);
     }
 
     public function delete(){
@@ -60,6 +83,8 @@ class Model{
         // }
         if(gettype($val)=='string'){
             return "'" . $val . "'";
+        }elseif(is_null($val)){
+            return 'null';
         }else{
             return $val;
         }
@@ -70,7 +95,7 @@ class Model{
     }
 
     public function __get($name){
-        return $this->values[$name];
+        return $this->values[$name] ?? null;
 
     }
 

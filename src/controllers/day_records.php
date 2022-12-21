@@ -9,6 +9,10 @@ $today = IntlDateFormatter::formatObject($cal, "d ' de ' MMMM ' de ' yyyy ");
 
 //Carregando a jornada do dia;
 $register = WorkingHours::loadFromUserAndDate($_SESSION['user']->id, $formatedDay);
+// echo $formatedDay . "<br>";
+// echo '<pre>';
+// print_r($register);
+// echo '</pre>';
 
 //Carregando Layout;
 

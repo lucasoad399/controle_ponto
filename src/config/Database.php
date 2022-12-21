@@ -75,15 +75,15 @@ class Database
 
     public function executeSQL($sql){
         $conn = $this->getConnection($sql);
-        echo $sql . '<br>';
+        // echo $sql . '<br>';
         // if(!$conn->exec($sql)){
         //     throw new Exception("Sei lá que porra Rolou, mas o dado não foi persistido no banco: $sql");
             
         // }
         try {
             $conn->exec($sql);
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            echo $e->getMessage();
         }
         // $id= $conn->lastInsertId();
         // return $id;

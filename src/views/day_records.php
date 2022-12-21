@@ -14,14 +14,18 @@
             <h3><?=$today?></h3>
             <p class= "mb-0">Os batimentos efetuados hoje</p>
         </div>
+        <?php
+    
+
+        ?>
         <div class="card-body">
             <div class="d-flex justify-content-around m-5">
-                <span>Entrada 1: ---</span>
-                <span>Saída 1: ---</span>
+                <span>Entrada 1: <?= $register->time1  ?? ' ---' ?></span>
+                <span>Saída 1: <?= $register->time2 ??  ' ---'?></span>
             </div>
             <div class="d-flex justify-content-around m-5">
-                <span>Entrada 2: ---</span>
-                <span>Saída 2: ---</span>
+            <span>Entrada 2: <?= $register->time3 ??  ' ---' ?></span>
+            <span>Saída 2: <?= $register->time4 ?? ' ---' ?></span>
             </div>
         </div>
         <div class="card-footer text-center">

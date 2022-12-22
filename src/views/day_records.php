@@ -6,7 +6,8 @@
                 'Mantenha seu Ponto Consistente',
                 'icofont-check-alt'
             );
-            
+            echo showSessionMessage();
+            cleanSessionMessage();
             ?>
          
     <div class="card">
@@ -16,7 +17,6 @@
         </div>
         <?php
     
-
         ?>
         <div class="card-body">
             <div class="d-flex justify-content-around m-5">
@@ -29,11 +29,12 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <a href="???" class="btn btn-success btn-lg">
+            <a href="innout.php?register=<?=$register->work_date?>&user_id=<?=$register->user_id?>" class="btn btn-success btn-lg">
                 <i class="icofont-check mr-1"></i>
                 Bater o Ponto
             </a>
         </div>
+        
 
     </div>
 

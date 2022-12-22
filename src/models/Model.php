@@ -17,12 +17,14 @@ class Model{
     }
 
     public function insert(){
-        $tableName = static::$tableName;
         // $id = (int)static::getOne(['id'], 'max(id) as id')->id+1; // oi eu aqui gerando um id+1;
         // echo '<hr>'.$id . '<hr>';
-        $colunas = static::$columns;
+
+        // $colunas = static::$columns; comentei de teste;
+        $colunas =  array_keys($this->values);
+
         // unset($colunas['id']);
-        array_shift($colunas);
+        // array_shift($colunas);
         
         // print_r($colunas);
         $sql = "INSERT INTO " . static::$tableName . "(". 

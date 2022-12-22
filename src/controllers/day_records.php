@@ -3,7 +3,7 @@
 $user = Login::requireValideSession();
 
 
-$formatedDay = (new DateTime())->modify('-1 day')->format('Y-m-d');
+$formatedDay = (new DateTime())/*->modify('-1 day')*/->format('Y-m-d');
 $cal = IntlCalendar::fromDateTime( $formatedDay , 'pt_BR');
 $today = IntlDateFormatter::formatObject($cal, "d ' de ' MMMM ' de ' yyyy ");
 

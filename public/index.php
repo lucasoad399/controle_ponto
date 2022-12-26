@@ -10,9 +10,7 @@
     }
     
     require_once CONTROLLER_PATH . "{$uri}";
-
-    // sisLoad('controller', 'data_generator');
-
+    // require_once CONTROLLER_PATH  . '/data_generator.php';
 
 ?>
     

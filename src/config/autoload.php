@@ -22,3 +22,21 @@ function renderTitle($title, $subtitle, $icon = ''){
 
 }
 
+function showSessionMessage(){
+    
+    $message =  $_SESSION['message']['message'] ??  null;
+    $type =$_SESSION['message']['type'] ?? null;
+
+    if($type=='error'){
+        return "<div class= 'alert alert-danger'>{$message}</div>";
+    }
+    if($type == 'success'){
+        return "<div class= 'alert alert-success'>{$message}</div>";
+    }
+    
+}
+
+function cleanSessionMessage(){
+    unset($_SESSION['message']);
+}
+

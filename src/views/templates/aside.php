@@ -32,7 +32,8 @@
             <i class="icon icofont-hour-glass text-primary"></i>
             <div class="info">
                 <span class="main text-primary">
-                    04:23
+                    <!-- 04:23 -->
+                    <?= $register->toHours()?>
                 </span>
                 <span class="label text-muted">Horas Trabalhadas</span>
             </div>

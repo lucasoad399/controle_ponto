@@ -18,7 +18,7 @@ $register = WorkingHours::loadFromUserAndDate($_SESSION['user']->id, $formatedDa
 
 
 sisLoad('view', 'templates/header',['user'=>$user]);
-sisLoad('view','templates/aside');
+sisLoad('view','templates/aside', ['register'=>$register]);
 sisLoad('view', 'day_records', [
     'today'=>$today,
     'register'=>$register

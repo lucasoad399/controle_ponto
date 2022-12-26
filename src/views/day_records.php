@@ -15,9 +15,7 @@
             <h3><?=$today?></h3>
             <p class= "mb-0">Os batimentos efetuados hoje</p>
         </div>
-        <?php
-    
-        ?>
+        
         <div class="card-body">
             <div class="d-flex justify-content-around m-5">
                 <span>Entrada 1: <?= $register->time1  ?? ' ---' ?></span>
@@ -37,6 +35,18 @@
         
 
     </div>
+
+    <form action="innout.php" method="post" class="mt-3">
+        <div class="input-group no-border">
+            <input type="text" class="form-control" name="simulated_time" id="simulated_time">
+            <button class="btn btn-danger  ml-3">Simular Ponto</button>
+        </div>
+    </form>
+    <?php
+        echo '<pre>';
+        print_r($register);
+        echo '</pre>';
+    ?>
 
 
 </main>

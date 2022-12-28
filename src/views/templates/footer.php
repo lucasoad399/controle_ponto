@@ -7,5 +7,6 @@
     </footer>
     <script src="/assets/js/toogleSidebar.js">
     </script>
+    
     </body>
 </html>

@@ -9,18 +9,21 @@ $today = IntlDateFormatter::formatObject($cal, "d ' de ' MMMM ' de ' yyyy ");
 
 //Carregando a jornada do dia;
 $register = WorkingHours::loadFromUserAndDate($_SESSION['user']->id, $formatedDay);
-// echo $formatedDay . "<br>";
-// echo '<pre>';
-// print_r($register);
-// echo '</pre>';
 
-//Carregando Layout;
+$exitTime = $register->getExitTime();
+$workedTime = $register->getWorkedInterval();
 
 
 sisLoad('view', 'templates/header',['user'=>$user]);
-sisLoad('view','templates/aside', ['register'=>$register]);
+sisLoad('view','templates/aside', [
+    'exitTime'=>$exitTime,
+    'workedTime'=>$workedTime
+]);
 sisLoad('view', 'day_records', [
     'today'=>$today,
     'register'=>$register
 ]);
-sisLoad('view', 'templates/footer');
+sisLoad('view', 'templates/footer', [
+    'exitTime'=>$exitTime,
+    'workedTime'=>$workedTime
+]);

@@ -1,4 +1,4 @@
-// (function toogleSidebar(){
+(function toogleSidebar(){
     let toogle = document.querySelector('.menu-toogle');
    
     const body = document.querySelector('body');
@@ -14,7 +14,7 @@
     //     activeClock.innerHTML= 'Cu';
     // },1000);
 });
-// })();
+})();
 
 
   

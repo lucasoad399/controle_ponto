@@ -2,13 +2,13 @@
     <nav class="menu mt-3">
         <ul class=" nav-list list-unstyled">
             <li class="nav-item ">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="day_records.php">
                     <i class="icofont-ui-check mr-2"></i>
                     Registrar Ponto
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="day_records.php?main=monthly_report">
                     <i class="icofont-ui-calendar mr-2"></i>
                     Relatório Mensal
                 </a>

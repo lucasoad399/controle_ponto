@@ -21,10 +21,24 @@ sisLoad('view','templates/aside', [
     'workedTime'=>$workedTime,
     'activeClock'=>$activeClock
 ]);
-sisLoad('view', 'day_records', [
-    'today'=>$today,
-    'register'=>$register
-]);
+
+$main = $_GET['main'] ?? 'day_records';
+if($main == 'monthly_report') {
+    require_once 'monthly_report.php';
+    // sisLoad('view', $main, [
+    //     'today'=>$today,
+    //     'register'=>$register,
+    //     'teste'=>$teste
+    // ]);
+
+} else{
+    sisLoad('view', $main, [
+        'today'=>$today,
+        'register'=>$register
+    ]);
+}
+
+
 sisLoad('view', 'templates/footer', [
     'exitTime'=>$exitTime,
     'workedTime'=>$workedTime

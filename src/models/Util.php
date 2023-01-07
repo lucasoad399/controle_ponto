@@ -48,4 +48,13 @@ Class Util{
     public static function getDateFromString($str){
         return  DateTimeImmutable::createFromFormat('H:i:s', $str);
     }
+
+    public static function getFirstDayOfMonth($date){
+        $time =  SELF::getDateAsDateTime($date)->getTimestamp();
+        return (new DateTime(date('Y-m-1', $time)));
+    }
+    public static function getLastDayOfMonth($date){
+        $time =  SELF::getDateAsDateTime($date)->getTimestamp();
+        return (new DateTime(date('Y-m-t', $time)));
+    }
 }

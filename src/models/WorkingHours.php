@@ -141,4 +141,23 @@ class WorkingHours extends Model{
         } 
         return null;
     }
+
+    public static function getMonthlyReport($user_id, $date){
+        $registries = [];
+        $startDate = Util::getFirstDayOfMonth($date);
+        $endDate = Util::getLastDayOfMonth($date);
+
+        for($date = $startDate; $date <= $endDate; $date->modify('+1 day') ){
+            $registrie = self::getOne([
+                'user_id'=>$user_id,
+                'work_date'=>$date->format('Y-m-d')
+            ]);
+
+            if(!is_null($registrie)){
+                $registries[$registrie->work_date] = $registrie;
+            }
+        }
+
+        return $registries;
+    }
 }

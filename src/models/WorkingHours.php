@@ -104,7 +104,7 @@ class WorkingHours extends Model{
     function getExitTime(){
         [$t1,$t2,$t3,$t4] =$this->getTimes();
         if($t4) return $t4;
-        if(!$t1) return (new DateTime('18:00:00'));
+        if(!$t1) return (new DateTime())->add(new DateInterval('PT09H'));
         
         $workedInterval = $this->getWorkedInterval();
         
@@ -130,5 +130,15 @@ class WorkingHours extends Model{
             $times[] = $this->{'time'. $i}? Util::getDateFromString($this->{'time'. $i}): null;
         }
         return $times;
+    }
+
+    public function activeClock(){
+        $nextTime = $this->getNextTime();
+        if($nextTime === 'time1' || $nextTime === 'time3'){
+            return 'exitTime';
+        }else if($nextTime === 'time2' || $nextTime === 'time4'){
+            return 'workingHours';
+        } 
+        return null;
     }
 }

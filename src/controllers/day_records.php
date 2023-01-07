@@ -13,11 +13,13 @@ $register = WorkingHours::loadFromUserAndDate($_SESSION['user']->id, $formatedDa
 $exitTime = $register->getExitTime();
 $workedTime = $register->getWorkedInterval();
 
+$activeClock = $register->activeClock();
 
 sisLoad('view', 'templates/header',['user'=>$user]);
 sisLoad('view','templates/aside', [
     'exitTime'=>$exitTime,
-    'workedTime'=>$workedTime
+    'workedTime'=>$workedTime,
+    'activeClock'=>$activeClock
 ]);
 sisLoad('view', 'day_records', [
     'today'=>$today,

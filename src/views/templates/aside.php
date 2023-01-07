@@ -31,7 +31,7 @@
         <div class="sidebar-widget">
             <i class="icon icofont-hour-glass text-primary"></i>
             <div class="info">
-                <span class="main text-primary animateTime">
+                <span class="main text-primary testexpto <?=$activeClock=='workingHours' ?'active-clock':''?>">
                     <?=$workedTime->format('%H:%I:%S')?>
                    
                 </span>
@@ -42,7 +42,7 @@
         <div class="sidebar-widget">
             <i class="icon icofont-ui-alarm text-danger"></i>
             <div class="info">
-                <span class="main text-danger ">
+                <span class="main text-danger <?=$activeClock=='exitTime' ?'active-clock':''?>">
                     <?= $exitTime->format('H:i:s'); ?>
                 </span>
                 <span class="label text-muted">Hora de Saída</span>

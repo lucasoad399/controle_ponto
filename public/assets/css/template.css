@@ -1,5 +1,6 @@
 :root{
     --aside_size : 250px;
+    --base_color: #1976d2;
 }
 
 
@@ -26,7 +27,7 @@ body.aside-hide{
 
 header.header{
     grid-area: header;
-    background-color: #1976d2;
+    background-color: var(--base_color);
     display: flex;
     align-items: center;
     z-index: 10;
@@ -178,3 +179,9 @@ footer.footer{
     padding-right: 4rem;
     font-size: 1.2rem;
 }
+
+.thead_color{
+    background-color: var(--base_color);
+    color: white;
+}
+

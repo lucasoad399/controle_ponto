@@ -25,7 +25,7 @@
         <div class="spacer"></div>
         <div class="dropdown text-white">
             <div class="dropdown-button">
-                <span> Usuário <?=$user?></span>
+                <span> Usuário <?=$user->name?></span>
                 
                 <i class="icofont-simple-down"></i>
             </div>

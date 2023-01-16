@@ -2,13 +2,13 @@
     <nav class="menu mt-3">
         <ul class=" nav-list list-unstyled">
             <li class="nav-item ">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="day_records.php">
                     <i class="icofont-ui-check mr-2"></i>
                     Registrar Ponto
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="day_records.php?main=monthly_report">
                     <i class="icofont-ui-calendar mr-2"></i>
                     Relatório Mensal
                 </a>
@@ -31,9 +31,9 @@
         <div class="sidebar-widget">
             <i class="icon icofont-hour-glass text-primary"></i>
             <div class="info">
-                <span class="main text-primary">
-                    <!-- 04:23 -->
-                    <?= $register->toHours()?>
+                <span class="main text-primary testexpto <?=$activeClock=='workingHours' ?'active-clock':''?>">
+                    <?=$workedTime->format('%H:%I:%S')?>
+                   
                 </span>
                 <span class="label text-muted">Horas Trabalhadas</span>
             </div>
@@ -42,8 +42,8 @@
         <div class="sidebar-widget">
             <i class="icon icofont-ui-alarm text-danger"></i>
             <div class="info">
-                <span class="main text-danger">
-                    18:00
+                <span class="main text-danger <?=$activeClock=='exitTime' ?'active-clock':''?>">
+                    <?= $exitTime->format('H:i:s'); ?>
                 </span>
                 <span class="label text-muted">Hora de Saída</span>
             </div>

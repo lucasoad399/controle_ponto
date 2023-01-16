@@ -24,7 +24,7 @@ class Login extends Model{
             header('Location: login.php');
             exit();
         }
-        return $user->name;
+        return $user;//->name;
     }
 
     public static function logout(){

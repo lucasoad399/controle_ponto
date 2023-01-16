@@ -42,11 +42,11 @@
             <button class="btn btn-danger  ml-3">Simular Ponto</button>
         </div>
     </form>
-    <?php
+    <!-- <?php
         echo '<pre>';
         print_r($register);
         echo '</pre>';
-    ?>
+    ?> -->
 
 
 </main>

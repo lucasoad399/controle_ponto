@@ -11,11 +11,9 @@ $register = WorkingHours::loadFromUserAndDate($_SESSION['user']->id, (new DateTi
 
 try {
 
-    // $register->innout((new DateTime)->format('H:i:s')); // Versão sem o teste simulado
-    $register->innout($_POST['simulated_time']??(new DateTime)->format('H:i:s')); //versão com o teste simulado
-
-    $_POST['simulated_time'] ?? $register->innout($_POST['simulated_time']);
-    unset($_POST['simulated_time']);
+    $moment = $_POST['simulated_time'] ?? (new DateTime)->format('H:i:s');
+    $register->innout($moment);
+    // unset($_POST['simulated_time']);
     $_SESSION['message'] = [
         'type' => 'success',
         'message' => 'Ponto Registrado com sucesso'
@@ -29,8 +27,8 @@ try {
 }
 
 
-echo '<pre>';
-print_r($register);
-echo '</pre>';
+// echo '<pre>';
+// print_r($register);
+// echo '</pre>';
 
 header('Location: /'); 

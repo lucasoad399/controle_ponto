@@ -48,4 +48,45 @@ Class Util{
     public static function getDateFromString($str){
         return  DateTimeImmutable::createFromFormat('H:i:s', $str);
     }
+
+    public static function getFirstDayOfMonth($date){
+        $time =  SELF::getDateAsDateTime($date)->getTimestamp();
+        return (new DateTime(date('Y-m-1', $time)));
+    }
+    public static function getLastDayOfMonth($date){
+        $time =  SELF::getDateAsDateTime($date)->getTimestamp();
+        return (new DateTime(date('Y-m-t', $time)));
+    }
+
+    public static function secondsToHours($seconds){
+        $signal = '';
+        if($seconds<0){
+            $signal = '-';
+            $seconds = abs($seconds);
+        }
+        $h = floor($seconds/3600);
+        $m = floor( ($seconds - $h*3600)/60  );
+        $s = floor(($seconds - $m*60 - $h*3600));
+    
+    
+        $strTime =  "$h:$m:$s";
+        $arrayTime = explode(':', $strTime);
+        foreach ($arrayTime as &$value) {
+            // echo $value[0].'<br>';
+            if(strlen($value)<2 && $value[0]!='-') $value = '0'.$value;
+            
+        }
+        $strTime = implode(':',$arrayTime);
+    
+        return  $signal . $strTime;
+    }
+
+    public static function formataData($strData){
+        $fmt = new IntlDateFormatter( 'pt_BR' ,IntlDateFormatter::FULL, IntlDateFormatter::NONE,
+        'America/Sao_Paulo',IntlDateFormatter::GREGORIAN  );
+
+        return $fmt->format(strtotime($strData));
+    }
+
+    
 }

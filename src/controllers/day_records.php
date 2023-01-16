@@ -9,18 +9,37 @@ $today = IntlDateFormatter::formatObject($cal, "d ' de ' MMMM ' de ' yyyy ");
 
 //Carregando a jornada do dia;
 $register = WorkingHours::loadFromUserAndDate($_SESSION['user']->id, $formatedDay);
-// echo $formatedDay . "<br>";
-// echo '<pre>';
-// print_r($register);
-// echo '</pre>';
 
-//Carregando Layout;
+$exitTime = $register->getExitTime();
+$workedTime = $register->getWorkedInterval();
 
+$activeClock = $register->activeClock();
 
 sisLoad('view', 'templates/header',['user'=>$user]);
-sisLoad('view','templates/aside', ['register'=>$register]);
-sisLoad('view', 'day_records', [
-    'today'=>$today,
-    'register'=>$register
+sisLoad('view','templates/aside', [
+    'exitTime'=>$exitTime,
+    'workedTime'=>$workedTime,
+    'activeClock'=>$activeClock
 ]);
-sisLoad('view', 'templates/footer');
+
+$main = $_GET['main'] ?? 'day_records';
+if($main == 'monthly_report') {
+    require_once 'monthly_report.php';
+    // sisLoad('view', $main, [
+    //     'today'=>$today,
+    //     'register'=>$register,
+    //     'teste'=>$teste
+    // ]);
+
+} else{
+    sisLoad('view', $main, [
+        'today'=>$today,
+        'register'=>$register
+    ]);
+}
+
+
+sisLoad('view', 'templates/footer', [
+    'exitTime'=>$exitTime,
+    'workedTime'=>$workedTime
+]);

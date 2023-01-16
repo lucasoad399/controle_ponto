@@ -7,5 +7,8 @@
     </footer>
     <script src="/assets/js/toogleSidebar.js">
     </script>
+    <script src="/assets/js/showRemaningTime.js">
+    </script>
+    
     </body>
 </html>

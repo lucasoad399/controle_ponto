@@ -13,6 +13,7 @@ class Model{
         //$this->values = $arr; -> não é viável porque limparia o array!!!
         foreach ($arr as $key => $value) {
             $this->$key = $value;
+           
         }
     }
 
@@ -39,7 +40,7 @@ class Model{
         
     
        
-        echo "Teste: ".$sql."<br>";
+        // echo "Teste: ".$sql."<br>";
         (new Database)->executeSQL($sql);
     }
 
@@ -102,7 +103,7 @@ class Model{
     }
 
     public static function getResultSetFromSelect(array $filters = [], string $columns = '*'){
-        $sql = "SELECT ${columns} FROM " . static::$tableName;
+        $sql = "SELECT {$columns} FROM " . static::$tableName;
 
         
         $con= new Database();
@@ -124,6 +125,10 @@ class Model{
         return $arrClasses;
     }
 
+    public static function getCount(array $filters){
+        $count = static::getResultSetFromSelect($filters, 'count(*) as count')->fetchAll();
+        return $count[0]['count'];
+    }
     public static function getOne(array $filters=[], string $columns = '*'){
         if(empty($filters)) return NULL;
         $result = static::getResultSetFromSelect($filters, $columns);

@@ -13,5 +13,13 @@ class User extends Model{
         'is_admin'
     ];
 
+    public static function getActiveUsersCount(){
+        $conn = new Database;
+        $conn->getConnection();
+        $result = $conn->getResultFromQuery("
+        SELECT count(*) as count FROM ". SELF::$tableName. " WHERE end_date is NULL
+        ",[]);;
+        return $result->fetchAll()[0]['count'];
+    }
     
 }

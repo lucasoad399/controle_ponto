@@ -160,4 +160,39 @@ class WorkingHours extends Model{
 
         return $registries;
     }
+
+    public static function getAbsentUsers(){
+        $today = new DateTime;
+        $conn = new Database;
+        $conn->getConnection();
+        $result = $conn->getResultFromQuery("
+            SELECT * FROM users 
+            WHERE end_date is NULL 
+            AND id NOT IN (
+                SELECT user_id FROM working_hours
+                WHERE WORK_DATE = '{$today->format('Y-m-d')}'
+                AND time1 IS NOT NULL
+            )
+            
+            ",[]
+            )->fetchAll();
+
+            $absentUsers = [];
+            foreach($result as $key=> $value){
+                $absentUsers[] = $value['name'];
+            }
+        return $absentUsers;
+    }
+
+    public static function getWorkedTimeInMonth($yearAndMonth){
+        $startDate = Util::getFirstDayOfMonth($yearAndMonth)->format('Y-m-d');
+        $endDate = Util::getLastDayOfMonth($yearAndMonth)->format('Y-m-d');
+        $conn = new Database;
+        $conn->getConnection();
+        $result = $conn->getResultFromQuery("
+        SELECT sum(worked_time) as sum FROM working_hours
+        WHERE work_date BETWEEN '{$startDate}' AND '{$endDate}'
+        ",[]);
+        return $result->fetchAll()[0]['sum'];
+    }
 }

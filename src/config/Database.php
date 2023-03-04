@@ -80,11 +80,11 @@ class Database
         //     throw new Exception("Sei lá que porra Rolou, mas o dado não foi persistido no banco: $sql");
             
         // }
-        try {
+        // try {
             $conn->exec($sql);
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-        }
+        // } catch (\Exception $e) {
+            // echo $e->getMessage();
+        // }
         // $id= $conn->lastInsertId();
         // return $id;
         return true;

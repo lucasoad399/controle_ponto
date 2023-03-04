@@ -49,7 +49,7 @@ class Model{
 
         foreach (static::$columns as $col) {
 
-            $sql.= $col. ' = ' . static::getFormatedeValue($this->$col) . ', ';
+            if($col!='id') $sql.= $col. ' = ' . static::getFormatedeValue($this->$col) . ', ';
             
 
         }
@@ -58,7 +58,7 @@ class Model{
 
         $sql.= " WHERE id = ". $this->id;
 
-        echo $sql.'<br><br>';
+        // echo '<br><br>'.$sql.'<br><br>';
         return (new Database)->executeSQL($sql);
     }
 
@@ -73,7 +73,7 @@ class Model{
             }
             
         }
-        // echo $sql;
+        //  echo $sql;
         // (new Database)->executeSQL($sql) ;
         (new Database)->executeSQL($sql);
 

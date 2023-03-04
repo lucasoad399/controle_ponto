@@ -38,6 +38,8 @@ if($main == 'monthly_report') {
     require_once 'users.php';
 }elseif($main == "save_user"){
     require_once 'save_user.php';
+}elseif($main == 'update_user'){
+    require_once 'update_user.php';
 }else{
     sisLoad('view', $main, [
         'today'=>$today,

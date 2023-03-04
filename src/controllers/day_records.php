@@ -23,15 +23,22 @@ sisLoad('view','templates/aside', [
 ]);
 
 $main = $_GET['main'] ?? 'day_records';
+// echo $main;
 if($main == 'monthly_report') {
     require_once 'monthly_report.php';
-    // sisLoad('view', $main, [
-    //     'today'=>$today,
-    //     'register'=>$register,
-    //     'teste'=>$teste
-    // ]);
+    /*sisLoad('view', $main, [
+        'today'=>$today,
+        'register'=>$register,
+        'teste'=>$teste
+    ]);*/
 
-} else{
+}elseif($main == 'maneger_report'){
+    require_once 'maneger_report.php';
+}elseif($main == "users"){
+    require_once 'users.php';
+}elseif($main == "save_user"){
+    require_once 'save_user.php';
+}else{
     sisLoad('view', $main, [
         'today'=>$today,
         'register'=>$register

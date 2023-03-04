@@ -81,11 +81,17 @@ Class Util{
         return  $signal . $strTime;
     }
 
-    public static function formataData($strData){
-        $fmt = new IntlDateFormatter( 'pt_BR' ,IntlDateFormatter::FULL, IntlDateFormatter::NONE,
+    public static function formataData($strData, $yearType='FULL'){
+        $fmt = new IntlDateFormatter( 'pt_BR' ,constant("IntlDateFormatter::".$yearType), IntlDateFormatter::NONE,
         'America/Sao_Paulo',IntlDateFormatter::GREGORIAN  );
 
         return $fmt->format(strtotime($strData));
+    }
+
+    public static function formataMes($strData){
+        $cal = IntlCalendar::fromDateTime($strData, 'America/Sao_Paulo');
+
+        return  IntlDateFormatter::formatObject($cal, " MMMM' de 'y", 'pt_BR');
     }
 
     

@@ -14,13 +14,13 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="day_records.php?main=maneger_report">
                     <i class="icofont-chart-histogram mr-2"></i>
                     Relatório Gerencial
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="day_records.php?main=users">
                     <i class="icofont-users mr-2"></i>
                     Usuários
                 </a>
